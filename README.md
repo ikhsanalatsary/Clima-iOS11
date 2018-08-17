@@ -6,7 +6,7 @@ Beginner: Download the starter project files as .zip and extract the files to yo
 Pro: Git clone to your Xcode projects folder.
 
 ## Finished App
-![Finished App](https://github.com/ikhsanalatsary/Clima-iOS11/blob/master/output.gif "Demo Clima App"){ max-width=50% }
+<img src="https://github.com/ikhsanalatsary/Clima-iOS11/raw/master/output.gif" width="267" alt="Finished App" title="Demo Clima App" style="max-width:30%;">
 
 ## Fix for Cocoapods v1.0.1 and below
 

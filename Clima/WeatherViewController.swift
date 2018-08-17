@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 import Alamofire
+import SVProgressHUD
 
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
@@ -39,8 +40,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-//        print(SVProgressHUD)
-        
+        SVProgressHUD.show()
     }
     
     
@@ -57,6 +57,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
                 case .success:
                     let weatherJSON : JSON = JSON(response.result.value!)
                     self.updateWeatherData(json: weatherJSON)
+                    SVProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
                     print("Error: \(error.localizedDescription)")
@@ -140,9 +141,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     
     //Write the userEnteredANewCityName Delegate method here:
-    func userEnteredNewCity(name: String) {
-        print("city: \(name)")
-        let params : [String: String] = ["q" : name, "appid" : APP_ID]
+    func userEnteredNew(cityName: String) {
+        SVProgressHUD.show()
+        let params : [String: String] = ["q" : cityName, "appid" : APP_ID]
         getWeatherData(url: WEATHER_URL, parameters: params)
     }
     
@@ -157,6 +158,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         }
     }
     
+    @IBAction func refreshButton(_ sender: UIButton) {
+        
+    }
     
     
     

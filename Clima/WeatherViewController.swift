@@ -36,11 +36,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
         
         //TODO:Set up the location manager here.
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        SVProgressHUD.show()
+        onRefresh()
     }
     
     
@@ -158,8 +154,20 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         }
     }
     
-    @IBAction func refreshButton(_ sender: UIButton) {
-        
+    //MARK: - Refresh method
+    /***************************************************************/
+    
+    func onRefresh() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        SVProgressHUD.show()
+    }
+    
+    // refresh action button
+    @IBAction func onRefreshPressed(_ sender: Any) {
+        onRefresh()
     }
     
     
